@@ -20,6 +20,10 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+app.use((req, res, next) => {
+  console.log(`Incoming request: ${req.method} ${req.path}`);
+});
+
 // Routes
 app.use("/api/books", bookRoutes);
 app.use("/api/borrow", borrowRoutes);
